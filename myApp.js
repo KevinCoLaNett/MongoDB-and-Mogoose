@@ -85,20 +85,16 @@ const removeById = (personId, done) => {
   })
 };
 
-var removeManyPeople = function(done) {
-  var nameToRemove = "Mary";
-  Person.deleteMany(
-  {name: nameToRemove},
-  (err, data) => {
-  if (err) {
-  done(err);
-  }
-  done(null, data);
-  }
-  )
-  
-  //done(null/, data/);
-  };
+const removeManyPeople = (done) => {
+  const nameToRemove = "Mary";
+  Person.remove({name: nameToRemove}, (err, JSONStatus) => {
+    if(err){
+      console.log(err);
+    }else{
+      done(null, JSONStatus);
+    }
+  })
+};
 
 const queryChain = (done) => {
   const foodToSearch = "burrito";
