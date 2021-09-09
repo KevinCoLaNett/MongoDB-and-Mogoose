@@ -71,7 +71,7 @@ const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
   Person.findOneAndUpdate(
     {"name": personName},
-    {$set: {"age":ageToSet}},{returnNewDocument : true}, 
+    {"age":ageToSet},{new : true}, 
     (err, peopleFound) => {
       if(err) return done(err);
       return done(null, peopleFound);
